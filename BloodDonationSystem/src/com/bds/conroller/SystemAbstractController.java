@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.AbstractController;
 
 
 /**
- * Provide short description for <code>CduAbstractController</code>
+ * Provide short description for <code>SystemAbstractController</code>
  * 
  * @author Kartheek P
  */

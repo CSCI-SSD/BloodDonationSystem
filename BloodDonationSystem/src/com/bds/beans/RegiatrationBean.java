@@ -1,14 +1,27 @@
-/**
- * 
+/** 
+ * Copyright 2015 Emergency Blood Donation System.
+ * All rights reserved.
+ *
+ * This software is the confidential and proprietary information of SSD 
+ * You shall not disclose such
+ * confidential Information and shall use it only in accordance with the terms of the
+ * license agreement you entered into with Modern Software Methodology Class.
  */
 package com.bds.beans;
 
 /**
  * @author kartheek
+ * 
+ *  Provide short description for <code>RegiatrationBean</code>
+ *  
+ *  This class will be used for registering user to the system
  *
  */
 public class RegiatrationBean {
 	
+	/**
+	 *  user first name
+	 */
 	private String firstName;
 	
 	private String lastName;
@@ -36,6 +49,8 @@ public class RegiatrationBean {
 	private String id;
 	
 	private String healthID;
+	
+	private String userType;
 	
 	
 
@@ -234,5 +249,20 @@ public class RegiatrationBean {
 	public void setHealthID(String healthID) {
 		this.healthID = healthID;
 	}
+
+	/**
+	 * @return the userType
+	 */
+	public String getUserType() {
+		return userType;
+	}
+
+	/**
+	 * @param userType the userType to set
+	 */
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+	
 	
 }
