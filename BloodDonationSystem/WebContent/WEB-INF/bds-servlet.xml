@@ -92,24 +92,24 @@
 			    /correspondents.view=correspondentsController
 			</value>
 		</property>
+	</bean>-->
+	
+	<bean id="loginController"	class="com.bds.conroller.LoginController">
+    	<property name="service" ref="service" />
 	</bean>
 	
 	<bean id="messageSource"   class="org.springframework.context.support.ResourceBundleMessageSource">   
-    	<property name="basename" value="com/br/sms/resource/ApplicationResource"/>   
-    </bean> -->
+    	<property name="basename" value="com/bds/db/resource/ApplicationResource"/>   
+    </bean> 
     
-    <bean id="messageSource"   class="org.springframework.context.support.ResourceBundleMessageSource">   
-    	<property name="basename" value="com/system/resource/ApplicationResource"/>   
-    </bean>
-    
-    
+     
     <bean id="dataSourceDB" class="oracle.jdbc.pool.OracleDataSource" destroy-method="close"> 
         <property name="URL" value="jdbc:oracle:thin:@localhost:1521:xe" /> 
         <property name="user" value="bds"/> 
         <property name="password" value="bds"/> 
     </bean>
     
-    <bean id="service" class="com.system.service.ServiceImpl">
+    <bean id="service" class="com.bds.service.ServiceImpl">
 		<property name="dataSource" ref="dataSourceDB" />
 	</bean>
     
