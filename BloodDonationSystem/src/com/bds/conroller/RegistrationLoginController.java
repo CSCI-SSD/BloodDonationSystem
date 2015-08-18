@@ -21,9 +21,14 @@ public class RegistrationLoginController extends SystemAbstractController {
 		// TODO Auto-generated method stub
 		
 		ModelAndView modelAndView = null;
+		
+		String page = (String)request.getParameter("pageid");
+		
+		
 		String resend = (String)request.getParameter("resend");
 		RegiatrationBean regiatrationBean = new RegiatrationBean();
 		regiatrationBean.setEmail((String)request.getParameter("email"));
+		
 		if (resend != null && resend.equals("true")) {
 			
 			String status = service.reSendEmail(regiatrationBean);
@@ -32,11 +37,11 @@ public class RegistrationLoginController extends SystemAbstractController {
 			return modelAndView;
 		}
 		
-		String uservalidation = (String)request.getParameter("uservalidation");
-		if (uservalidation != null && uservalidation.equals("true")) {
-			regiatrationBean.setCode(request.getParameter("validationCode"));
+		String uservalidation = ("uservalidation");
+		if (uservalidation != null && uservalidation.equals(page)) {
+			regiatrationBean.setCode(request.getParameter("code"));
 			String status = service.validateUser(regiatrationBean);
-			modelAndView = new ModelAndView("login");
+			modelAndView = new ModelAndView("Login");
 			request.setAttribute(SystemConstants.MESSAGE, status);
 			return modelAndView;
 		}
@@ -50,15 +55,37 @@ public class RegistrationLoginController extends SystemAbstractController {
 		regiatrationBean.setAdd2((String)request.getParameter("add2"));
 		regiatrationBean.setCity((String)request.getParameter("city"));
 		regiatrationBean.setState((String)request.getParameter("state"));
-		regiatrationBean.setPin(request.getParameter("pin"));
+		regiatrationBean.setPin(request.getParameter("zip"));
+		regiatrationBean.setId(request.getParameter("id"));
 		regiatrationBean.setPhone(request.getParameter("phone"));
+		regiatrationBean.setBloodType(request.getParameter("bloodtype"));
+		regiatrationBean.setHealthID(request.getParameter("id"));
+		regiatrationBean.setGender(request.getParameter("gender"));
+		regiatrationBean.setBloodType(request.getParameter("bloodtype"));
 		
-		String satus = service.registerUser(regiatrationBean);
+		String satus = "";
+		
+		if(page.equalsIgnoreCase(SystemConstants.PAGE_SEKER_REGISTRATION)) {
+			
+			regiatrationBean.setBloodType("ORG");
+			regiatrationBean.setLastName("ORG");
+			regiatrationBean.setUserType("SEKER");
+			regiatrationBean.setGender("ORG");
+			regiatrationBean.setHealthID("ORG");
+			regiatrationBean.setOccupation("ORG");
+			satus = service.registerSekerUser(regiatrationBean);
+		} else if(page.equalsIgnoreCase(SystemConstants.PAGE_DONOR_REGISTRATION)) {
+			regiatrationBean.setUserType("DONOR");
+			regiatrationBean.setOccupation("DONOR");
+			satus = service.registerDonorUser(regiatrationBean);
+		}
+		
+		
 		
 		
 		
 		if (satus.equals(SystemConstants.REGISTRATION_SUCCESS)) {
-			modelAndView = new ModelAndView("login");
+			modelAndView = new ModelAndView("Login");
 		} else {
 			modelAndView = new ModelAndView("registration");
 			request.setAttribute(SystemConstants.MESSAGE, "registrationFaild");

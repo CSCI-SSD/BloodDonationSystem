@@ -113,12 +113,16 @@
 		<property name="dataSource" ref="dataSourceDB" />
 	</bean>
     
-  
+  	<bean id="registrationLoginController"	class="com.bds.conroller.RegistrationLoginController">
+    	<property name="service" ref="service" />
+	</bean>
+    
     
     <bean	class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<value>
 			    /login.view=loginController
+			    /registration.view=registrationLoginController
 			    
 			</value>
 		</property>

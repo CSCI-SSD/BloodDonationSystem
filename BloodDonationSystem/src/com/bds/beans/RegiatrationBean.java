@@ -9,6 +9,8 @@
  */
 package com.bds.beans;
 
+import java.util.Date;
+
 /**
  * @author kartheek
  * 
@@ -44,7 +46,7 @@ public class RegiatrationBean {
 	
 	private String code;
 	
-	private String bllofType;
+	private String bloodType;
 	
 	private String id;
 	
@@ -52,7 +54,13 @@ public class RegiatrationBean {
 	
 	private String userType;
 	
+	private String dob;
 	
+	private Date dobDate;
+	
+	private String occupation;
+	
+	private String gender;
 
 	/**
 	 * @return the firstName
@@ -208,18 +216,19 @@ public class RegiatrationBean {
 		this.code = code;
 	}
 
+
 	/**
-	 * @return the bllofType
+	 * @return the bloodType
 	 */
-	public String getBllofType() {
-		return bllofType;
+	public String getBloodType() {
+		return bloodType;
 	}
 
 	/**
-	 * @param bllofType the bllofType to set
+	 * @param bloodType the bloodType to set
 	 */
-	public void setBllofType(String bllofType) {
-		this.bllofType = bllofType;
+	public void setBloodType(String bloodType) {
+		this.bloodType = bloodType;
 	}
 
 	/**
@@ -263,6 +272,61 @@ public class RegiatrationBean {
 	public void setUserType(String userType) {
 		this.userType = userType;
 	}
-	
+
+	/**
+	 * @return the dob
+	 */
+	public String getDob() {
+		return dob;
+	}
+
+	/**
+	 * @param dob the dob to set
+	 */
+	public void setDob(String dob) {
+		this.dob = dob;
+	}
+
+	/**
+	 * @return the dobDate
+	 */
+	public Date getDobDate() {
+		return dobDate;
+	}
+
+	/**
+	 * @param dobDate the dobDate to set
+	 */
+	public void setDobDate(Date dobDate) {
+		this.dobDate = dobDate;
+	}
+
+	/**
+	 * @return the occupation
+	 */
+	public String getOccupation() {
+		return occupation;
+	}
+
+	/**
+	 * @param occupation the occupation to set
+	 */
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
+	}
+
+	/**
+	 * @return the gender
+	 */
+	public String getGender() {
+		return gender;
+	}
+
+	/**
+	 * @param gender the gender to set
+	 */
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	
 }

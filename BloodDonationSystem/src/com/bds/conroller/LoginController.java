@@ -30,10 +30,10 @@ public class LoginController extends SystemAbstractController {
 			modelAndView = new ModelAndView("mainPage");
 			request.getSession().setAttribute(SystemConstants.LOGIN_DETAILS, loginBean);
 		} else if (loginBean.getStatus() != null && loginBean.getStatus().equalsIgnoreCase("REQUIRED")) {
-			modelAndView = new ModelAndView("registrationValidation");
+			modelAndView = new ModelAndView("validation");
 			modelAndView.addObject(SystemConstants.MESSAGE, "Validate");
 		} else {
-			modelAndView = new ModelAndView("login");
+			modelAndView = new ModelAndView("Login");
 			modelAndView.addObject(SystemConstants.MESSAGE, "Invalied Login");
 			
 		}

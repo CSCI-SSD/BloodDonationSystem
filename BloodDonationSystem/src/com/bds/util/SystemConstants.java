@@ -33,5 +33,9 @@ public class SystemConstants {
 	public static String ROLE_USER_DONOR = "D";
 	
 	public static String ROAL_USER_SEEKER = "S";
+	
+	public static String PAGE_SEKER_REGISTRATION = "sekerregistration";
+	
+	public static String PAGE_DONOR_REGISTRATION = "donorregistration";
 
 }

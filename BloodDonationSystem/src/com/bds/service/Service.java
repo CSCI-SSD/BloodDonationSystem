@@ -13,4 +13,8 @@ public interface Service {
 
 	public String validateUser(RegiatrationBean regiatrationBean);
 
+	public String registerSekerUser(RegiatrationBean regiatrationBean);
+
+	public String registerDonorUser(RegiatrationBean regiatrationBean);
+
 }

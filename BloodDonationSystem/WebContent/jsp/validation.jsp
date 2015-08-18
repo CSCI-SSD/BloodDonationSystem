@@ -3,12 +3,11 @@
 
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-
 <jsp:include flush="true" page="include.jsp"></jsp:include>
 
 <html>
 	<head>
-		<title><spring:message code="html.login.page.title" /></title>
+		<title><spring:message code="html.uservalidation.label.uservalidation.title" /></title>
 	<style>
 
 		html, body
@@ -40,7 +39,7 @@
 		    background-image: -ms-linear-gradient(top, #fff, #eee);
 		    background-image: -o-linear-gradient(top, #fff, #eee);
 		    background-image: linear-gradient(top, #fff, #eee);  
-		    height: 240px;
+		    height: 280px;
 		    width: 400px;
 		    margin: -150px 0 0 -230px;
 		    padding: 30px;
@@ -171,6 +170,11 @@
 		    background-position: 5px -52px !important;
 		}
 		
+		#code
+		{
+		    background-position: 5px -52px !important;
+		}
+		
 		#inputs input:focus
 		{
 		    background-color: #fff;
@@ -270,25 +274,38 @@
 
 	<body>
 
-		<form id="login" action="${pageContext.request.contextPath}/login.view" method="post">
+		<form id="login" action="${pageContext.request.contextPath}/registration.view" method="post">
 		    <h1>Log In</h1>
 		    <fieldset id="inputs">
-		        <input id="userName" name="userName" type="text" placeholder="Username" autofocus required>   
+		        <input name="email" id="userName" type="text" placeholder="Username" autofocus required>   
 		        <input id="password" name="password" type="password" placeholder="Password" required>
+		        <input id="code" name="code" type="password" placeholder="Code" required>
 		    </fieldset>
 		    <fieldset id="actions">
 		        <input type="submit" id="submit" value="Log in">
-		        <a href="">Forgot your password?</a><a href="">Register</a>
+		        <input  name="pageid" value="uservalidation" type="hidden"> <br>
 		    </fieldset>
 		   
 		</form>
-		
-		<div id="invaliedLogin" title="Message">  
-			 	 <p><span class="ui-icon ui-icon-alert"></span><spring:message code="html.login.label.invaliedlogin" /></p>
+		<div id="invaliedValidation" title="Message">  
+			 	 <p><span class="ui-icon ui-icon-alert"></span><spring:message code="html.uservalidation.label.invaliedvalidation" /></p>
 			 </div>
+			 
+			 <div id="validationRequired" title="Message">  
+			 	 <p><span class="ui-icon ui-icon-alert"></span><spring:message code="html.uservalidation.label.validationrequired" /></p>
+			 </div>
+			 
+			 <div id="sentMail" title="Message">  
+			 	 <p><span class="ui-icon ui-icon-alert"></span><spring:message code="html.uservalidation.label.sentmail" /></p>
+			 </div>
+			 
+			 <div id="notSentMail" title="Message">  
+			 	 <p><span class="ui-icon ui-icon-alert"></span><spring:message code="html.uservalidation.label.notsentmail" /></p>
+			 </div>
+		
 		<script>
 		$(document).ready(function(){
-		$("#invaliedLogin").dialog({         
+		$("#invaliedValidation").dialog({         
 	 		autoOpen: false,         
 	 		modal: true,
 	 	  	width: 460,
@@ -300,12 +317,57 @@
 	 	  	  
 	 	});
 		
+		$("#validationRequired").dialog({         
+	 		autoOpen: false,         
+	 		modal: true,
+	 	  	width: 460,
+	 	  	buttons: {
+		 	  	Ok: function() {
+                    $(this).dialog( "close" );
+                }
+	        }
+	 	  	  
+	 	});
 		
-		var message = "${message}";
+		$("#sentMail").dialog({         
+	 		autoOpen: false,         
+	 		modal: true,
+	 	  	width: 460,
+	 	  	buttons: {
+		 	  	Ok: function() {
+                    $(this).dialog( "close" );
+                }
+	        }
+	 	  	  
+	 	});
 		
-		if (message=='Invalied Login') {
-			$("#invaliedLogin").dialog('option', 'modal', true).dialog('open');
-		}
+		$("#notSentMail").dialog({         
+	 		autoOpen: false,         
+	 		modal: true,
+	 	  	width: 460,
+	 	  	buttons: {
+		 	  	Ok: function() {
+                    $(this).dialog( "close" );
+                }
+	        }
+	 	  	  
+	 	});
+		
+			var message = "${message}";
+			
+			if (message=='Invalied Validation') {
+				$("#invaliedValidation").dialog('option', 'modal', true).dialog('open');
+			} 
+			
+			if (message=="Validate") {
+				$("#validationRequired").dialog('option', 'modal', true).dialog('open');
+			}
+			if (message=="sent") {
+				$("#sentMail").dialog('option', 'modal', true).dialog('open');
+			}
+			if (message=="NotSent") {
+				$("#notSentMail").dialog('option', 'modal', true).dialog('open');
+			}
 		});
 		</script>
 
